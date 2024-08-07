@@ -1,0 +1,331 @@
+/* Gaya untuk sidebar */
+.sidebar {
+    background-color: #003366; /* Biru gelap untuk sidebar */
+    color: #ffffff; /* Warna teks putih */
+    padding: 20px;
+    height: 100vh; /* Sidebar memanjang sepanjang viewport */
+    width: 250px; /* Lebar sidebar */
+    position: fixed; /* Sidebar tetap di sisi kiri */
+    top: 0;
+    left: 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Bayangan halus untuk efek kedalaman */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Menyelaraskan logo dan konten di tengah secara horizontal */
+}
+
+/* Gaya untuk logo */
+.logo {
+    width: 100%; /* Mengatur lebar logo menjadi 100% dari lebar sidebar */
+    height: auto; /* Menjaga rasio aspek logo */
+    margin-bottom: 20px; /* Jarak bawah untuk memberi ruang pada elemen berikutnya */
+    border-radius: 10px;
+}
+
+/* Gaya untuk judul sidebar */
+.sidebar h2 {
+    font-size: 1.5rem;
+    margin: 0; /* Menghapus margin default pada judul */
+    text-align: center; /* Menyelaraskan judul di tengah */
+}
+
+/* Gaya untuk daftar link */
+.sidebar ul {
+    list-style: none; /* Menghapus bullet point */
+    padding: 0;
+    width: 100%; /* Mengatur lebar daftar link menjadi 100% dari lebar sidebar */
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: #ffffff; /* Warna teks link */
+    text-decoration: none; /* Menghapus garis bawah dari link */
+    display: block;
+    padding: 10px;
+    border-radius: 5px; /* Sudut melengkung untuk link */
+    transition: background-color 0.3s; /* Transisi lembut untuk perubahan background */
+}
+
+.sidebar ul li a:hover {
+    background-color: #0056b3; /* Warna latar belakang saat hover */
+}
+
+
+/* Gaya untuk main-content */
+.main-content {
+    margin-left: 270px; /* Memberikan ruang untuk sidebar */
+    padding: 20px;
+    background-color: #f8f9fa; /* Latar belakang abu-abu terang untuk konten utama */
+}
+
+header {
+    border-bottom: 2px solid #003366; /* Garis bawah header */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #044081; /* Warna biru terang untuk judul */
+    margin: 0; /* Menghapus margin default */
+}
+
+/* Gaya untuk overview section */
+.overview {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: #ffffff; /* Latar belakang putih untuk kartu */
+    padding: 20px;
+    border-radius: 8px; /* Sudut melengkung untuk kartu */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan halus untuk efek kedalaman */
+    width: 30%; /* Lebar kartu */
+    text-align: center;
+}
+
+.card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #003366; /* Warna teks pada kartu */
+}
+
+/* Gaya untuk recent-activities section */
+.recent-activities {
+    background-color: #ffffff; /* Latar belakang putih untuk aktivitas terbaru */
+    padding: 20px;
+    border-radius: 8px; /* Sudut melengkung untuk bagian aktivitas terbaru */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan halus untuk efek kedalaman */
+}
+
+.recent-activities h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #003366; /* Warna judul aktivitas terbaru */
+}
+
+.recent-activities ul {
+    list-style: none; /* Menghapus bullet point */
+    padding: 0;
+}
+
+.recent-activities ul li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.recent-activities ul li strong {
+    color: #007bff; /* Warna teks penting */
+}
+
+/* table members */
+/* Gaya untuk section member */
+.section-member {
+    padding: 20px;
+    background-color: #f8f9fa; /* Latar belakang abu-abu terang untuk section member */
+    border-radius: 8px; /* Sudut melengkung untuk section member */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan halus untuk efek kedalaman */
+}
+
+/* Gaya untuk header dalam section member */
+.section-member header {
+    border-bottom: 2px solid #003366; /* Garis bawah header */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Gaya untuk tombol tambah anggota */
+.btn-add-member {
+    background-color: #007bff; /* Warna latar belakang biru */
+    color: #ffffff; /* Warna teks putih */
+    padding: 10px 20px; /* Jarak dalam tombol */
+    border: none; /* Menghapus border default */
+    border-radius: 5px; /* Sudut melengkung pada tombol */
+    text-decoration: none; /* Menghapus garis bawah */
+    font-size: 1rem; /* Ukuran font */
+    display: inline-block; /* Menyusun tombol secara horizontal */
+    margin-bottom: 20px; /* Jarak bawah tombol */
+    transition: background-color 0.3s; /* Transisi lembut untuk perubahan background */
+}
+
+.btn-add-member:hover {
+    background-color: #0056b3; /* Warna latar belakang saat hover */
+}
+
+.btn-add-member.delete {
+    background-color: #dc3545; /* Warna merah untuk tombol hapus */
+}
+
+.btn-add-member.delete:hover {
+    background-color: #c82333; /* Warna latar belakang saat hover untuk tombol hapus */
+}
+
+/* Gaya untuk tabel anggota */
+.member-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.member-table th,
+.member-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.member-table th {
+    background-color: #003366; /* Warna latar belakang header tabel */
+    color: #ffffff; /* Warna teks header tabel */
+}
+
+.member-table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Warna latar belakang baris genap */
+}
+
+.member-table tr:hover {
+    background-color: #ddd; /* Warna latar belakang baris saat hover */
+}
+
+/* Responsif untuk tabel */
+@media (max-width: 768px) {
+    .member-table {
+        border: 0;
+    }
+
+    .member-table thead {
+        display: none; /* Menyembunyikan header tabel pada tampilan kecil */
+    }
+
+    .member-table tr {
+        display: block;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+    }
+
+    .member-table td {
+        display: block;
+        text-align: right;
+        font-size: 0.9rem;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+        padding-left: 50%;
+        white-space: nowrap;
+    }
+
+    .member-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #003366;
+        background-color: #f8f9fa;
+    }
+}
+
+
+/* form */
+/* Gaya untuk section form */
+.section-form {
+    background-color: #ffffff; /* Latar belakang putih untuk formulir */
+    padding: 20px;
+    border-radius: 8px; /* Sudut melengkung pada formulir */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan halus untuk efek kedalaman */
+    max-width: 800px; /* Lebar maksimal formulir */
+    margin: auto; /* Menyelaraskan formulir di tengah */
+}
+
+.section-form header {
+    border-bottom: 2px solid #003366; /* Garis bawah header */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.section-form h1 {
+    font-size: 1.75rem;
+    color: #003366; /* Warna biru gelap untuk judul */
+    margin: 0;
+}
+
+.form-group {
+    margin-bottom: 15px; /* Jarak bawah antar grup formulir */
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333; /* Warna teks label */
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px; /* Menambahkan padding agar elemen input lebih besar dan lebih mudah diakses */
+    border: 1px solid #ddd;
+    border-radius: 5px; /* Sudut melengkung pada input */
+    font-size: 1rem;
+    box-sizing: border-box; /* Memastikan padding dan border dihitung dalam lebar elemen */
+}
+
+.form-group textarea {
+    resize: vertical; /* Memungkinkan pengguna untuk mengubah ukuran vertikal */
+}
+
+#add-member-form button.btn-add-member {
+    background-color: #007bff; /* Warna biru untuk tombol */
+    color: #ffffff; /* Warna teks putih */
+    padding: 12px 24px; /* Jarak dalam tombol */
+    border: none; /* Menghapus border default */
+    border-radius: 5px; /* Sudut melengkung pada tombol */
+    font-size: 1rem;
+    cursor: pointer; /* Menunjukkan bahwa tombol bisa diklik */
+    transition: background-color 0.3s; /* Transisi lembut untuk perubahan warna latar belakang */
+}
+
+#add-member-form button.btn-add-member:hover {
+    background-color: #0056b3; /* Warna latar belakang saat hover */
+}
+
+#response-message {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #28a745; /* Warna hijau untuk pesan sukses */
+}
+
+/* Responsif untuk tampilan kecil */
+@media (max-width: 768px) {
+    .section-form {
+        padding: 15px;
+    }
+
+    .section-form h1 {
+        font-size: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 0.9rem;
+        padding: 10px; /* Menurunkan padding untuk tampilan yang lebih baik pada perangkat kecil */
+    }
+
+    #add-member-form button.btn-add-member {
+        font-size: 0.9rem;
+        padding: 10px 20px; /* Menurunkan padding untuk tombol pada perangkat kecil */
+    }
+}
