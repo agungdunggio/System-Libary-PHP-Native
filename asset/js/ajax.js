@@ -14,11 +14,11 @@ $(document).ready(function() {
         });
     }
 
-    // Tangani klik menu dengan event delegation
-    $(document).on('click', 'ul li a, .section-member a', function(e) {
+    // Tangani klik menu
+    $('ul li a').on('click', function(e) {
         e.preventDefault();
         var href = $(this).attr('href').substring(1); // Ambil ID dari href (misalnya 'dashboard')
-        
+
         // Mapping href ke file PHP atau endpoint
         var page;
         switch (href) {
@@ -34,27 +34,24 @@ $(document).ready(function() {
             case 'transaction':
                 page = 'loans_returns.php';
                 break;
-            case 'add_member':
-                page = 'add/add_member.php';
-                break;
-            case 'add_book':
-                page = 'add/add_book.php';
-                break;
-            case 'add_transaction':
-                page = 'add_loans_returns.php';
-                break;
             case 'logout':
                 window.location.href = './func/logout.php';
                 return; // Menghentikan eksekusi script lebih lanjut
             default:
                 page = '404.php'; // Halaman tidak ditemukan
         }
-        
+
         loadContent(page);
     });
 
+    // Mengambil path dari URL
+    var pathname = window.location.pathname;
 
-
-    // Muat konten default pada halaman awal
-    loadContent('dashboard.php');
+    // Mengambil nama file dari path
+    var filename = pathname.split('/').pop();
+    console.log(filename);
+    if (filename == "admin.php" ) {
+        // Muat konten default pada halaman awal
+        loadContent('dashboard.php');
+    }
 });

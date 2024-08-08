@@ -329,3 +329,34 @@ h1 {
         padding: 10px 20px; /* Menurunkan padding untuk tombol pada perangkat kecil */
     }
 }
+
+/* flash */
+.flash-success {
+    background-color: #28a745; /* Warna hijau untuk sukses */
+}
+
+/* Gaya untuk pesan flash */
+.flash-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+    z-index: 9999; /* Pastikan pesan berada di atas konten lain */
+}
+
+/* Gaya untuk pesan flash yang menghilang */
+.flash-message.hidden {
+    opacity: 0;
+    pointer-events: none; /* Menonaktifkan interaksi saat tersembunyi */
+}
+
+/* Gaya khusus untuk pesan kesalahan */
+.flash-error {
+    background-color: #dc3545; /* Warna merah untuk kesalahan */
+}
+
