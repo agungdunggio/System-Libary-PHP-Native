@@ -1,10 +1,15 @@
+<?php
+
+require '../func/functions.php';
+$books = query("Select * from books");
+?>
 <section class="section-member">
 
     <header>
         <h1>Data Buku</h1>
     </header>
     
-    <a href="#add_book" class="btn-add-member">Tambah Buku</a>
+    <a href="add_book.php" class="btn-add-member">Tambah Buku</a>
     
     <table class="member-table">
         <thead>
@@ -21,19 +26,22 @@
         </thead>
         <tbody>
         <!-- Contoh baris data buku -->
+         <?php $i = 1; ?>
+         <?php foreach ($books as $book) : ?>
         <tr>
-            <td>1</td>
-            <td>Belajar HTML</td>
-            <td>John Doe</td>
-            <td>Publisher XYZ</td>
-            <td>2024</td>
-            <td>Teknologi</td>
-            <td>978-1234567890</td>
+            <td><?= $i++; ?></td>
+            <td><?= $book["judul_buku"]; ?></td>
+            <td><?= $book["penulis"]; ?></td>
+            <td><?= $book["penerbit"]; ?></td>
+            <td><?= $book["tahun"]; ?></td>
+            <td><?= $book["jumlah_eksemplar"]; ?></td>
+            <td><?= $book["no_panggil"]; ?></td>
             <td>
-                <a href="edit_book.php?id=001" class="btn-add-member">Edit</a>
-                <a href="delete_book.php?id=001" class="btn-add-member" style="background-color: #dc3545;">Hapus</a>
+                <a href="edit_book.php?id=<?= $book["id_buku"]; ?>" class="btn-add-member">Edit</a>
+                <a href="delete_book.php?id=<?= $book["id_buku"]; ?>" onclick="return confirm('Yakin Hapus Data?');" class="btn-add-member delete" style="background-color: #dc3545;">Hapus</a>
             </td>
         </tr>
+        <?php endforeach; ?>
         <!-- Baris data lainnya -->
     </tbody>
 </table>

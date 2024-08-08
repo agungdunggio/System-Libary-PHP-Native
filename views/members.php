@@ -49,7 +49,7 @@ $members = query("Select * from members");
                     <td><?= $member["alamat"]; ?></td>
                     <td>
                         <a href="edit_member.php?nik=<?= $member["nik"]; ?>" class="btn-add-member">Edit</a>
-                        <a href="delete_member.php?nik=<?= $member["nik"]; ?>" class="btn-add-member" style="background-color: #dc3545;">Hapus</a>
+                        <a href="delete_member.php?nik=<?= $member["nik"]; ?>" onclick="return confirm('Yakin Hapus Data?');" class="btn-add-member delete" style="background-color: #dc3545;">Hapus</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

@@ -1,3 +1,12 @@
+<?php 
+session_start();
+$flashMessage = isset($_SESSION['flash_message']) ? $_SESSION['flash_message'] : '';
+$flashMessageType = isset($_SESSION['flash_message_type']) ? $_SESSION['flash_message_type'] : '';
+
+// Hapus pesan flash setelah ditampilkan
+unset($_SESSION['flash_message']);
+unset($_SESSION['flash_message_type']); 
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -19,11 +28,26 @@
             <li><a href="#logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </div>
+    <?php if (isset($flashMessage)) : ?>
+        <div id="flash-message" class="flash-message flash-<?php echo htmlspecialchars($flashMessageType); ?>">
+            <p><?php echo htmlspecialchars($flashMessage); ?></p>
+        </div>
+    <?php endif; ?>
     <div class="main-content">
         <!-- main content -->
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="asset/js/ajax.js"></script>
+    <script>
+        $(document).ready(function() {
+            var flashMessage = $('#flash-message');
+            if (flashMessage.length) {
+                setTimeout(function() {
+                    flashMessage.fadeOut();
+                }, 5000); // 5000 ms = 5 detik
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,14 +1,18 @@
-<?php 
+<?php
 require './func/cnt_books.php';
-
+session_start();
+$id = $_GET["id"];
+$book = query("SELECT * FROM books where id_buku = $id")[0];
 if (isset($_POST["submit"])) {
-    if (insert($_POST) > 0) {
-        $flashMessage = "Data Berhasil dimasukan";
-        $flashMessageType = "success";
+    if (update($_POST) > 0) {
+        $_SESSION['flash_message'] = 'Data Buku berhasil Diubah.';
+        $_SESSION['flash_message_type'] = 'success'; // Mengatur tipe pesan
     } else {
-        $flashMessage = "Data Gagal dimasukan";
-        $flashMessageType = "error";
+        $_SESSION['flash_message'] = 'Gagal mengubah data Buku.';
+        $_SESSION['flash_message_type'] = 'error';
     }
+    header('Location: admin.php');
+    exit;
 }
 
 
@@ -37,59 +41,45 @@ if (isset($_POST["submit"])) {
         </ul>
     </div>
     <div class="main-content">
-    <?php if (isset($flashMessage)): ?>
-    <div id="flash-message" class="flash-message flash-<?php echo htmlspecialchars($flashMessageType); ?>">
-        <p><?php echo htmlspecialchars($flashMessage); ?></p>
-    </div>
-    <?php endif; ?>
         <section class="section-form">
             <header>
-                <h1>Tambah Buku</h1>
+                <h1>Update Buku</h1>
             </header>
 
-            <form id="add-book-form" action="add_book.php" method="post">
+            <form id="add-book-form" action="" method="post">
+                <input type="hidden" name="id_buku" value="<?= htmlspecialchars($book["id_buku"]); ?>">
                 <div class="form-group">
                     <label for="judul">Judul Buku</label>
-                    <input type="text" id="judul" name="judul_buku" required>
+                    <input type="text" id="judul" name="judul_buku" required value="<?= htmlspecialchars($book["judul_buku"]); ?>">
                 </div>
                 <div class="form-group">
                     <label for="penulis">Penulis</label>
-                    <input type="text" id="penulis" name="penulis" required>
+                    <input type="text" id="penulis" name="penulis" required value="<?= htmlspecialchars($book["penulis"]); ?>">
                 </div>
                 <div class="form-group">
                     <label for="penerbit">Penerbit</label>
-                    <input type="text" id="penerbit" name="penerbit" required>
+                    <input type="text" id="penerbit" name="penerbit" required value="<?= htmlspecialchars($book["penerbit"]); ?>">
                 </div>
                 <div class="form-group">
                     <label for="tahun_terbit">Tahun Terbit</label>
-                    <input type="number" id="tahun_terbit" name="tahun" required>
+                    <input type="number" id="tahun_terbit" name="tahun" required value="<?= htmlspecialchars($book["tahun"]); ?>">
                 </div>
                 <div class="form-group">
                     <label for="jumlah_hal">Jumlah Eksemplar</label>
-                    <input type="number" id="jumlah_hal" name="jumlah_eksemplar" required>
+                    <input type="number" id="jumlah_hal" name="jumlah_eksemplar" required value="<?= htmlspecialchars($book["jumlah_eksemplar"]); ?>">
                 </div>
                 <div class="form-group">
                     <label for="no_panggil">No Panggil</label>
-                    <input type="text" id="no_panggil" name="no_panggil" required>
+                    <input type="text" id="no_panggil" name="no_panggil" required value="<?= htmlspecialchars($book["no_panggil"]); ?>">
                 </div>
-                <button type="submit" name="submit" class="btn-add-member">Simpan</button>
+                <button type="submit" name="submit" class="btn-add-member">Update</button>
             </form>
-            <div id="response-message"></div>
+
         </section>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="asset/js/ajax.js"></script>
-    <script>
-        $(document).ready(function() {
-            var flashMessage = $('#flash-message');
-            if (flashMessage.length) {
-                setTimeout(function() {
-                    flashMessage.fadeOut();
-                }, 5000); // 5000 ms = 5 detik
-            }
-        });
-    </script>
 </body>
 
 </html>
