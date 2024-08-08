@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-require 'func/cnt_loan_return.php';
+require 'func/cnt_loans_returns.php';
 $id = $_GET["id"];
 
 if (delete($id) > 0) {

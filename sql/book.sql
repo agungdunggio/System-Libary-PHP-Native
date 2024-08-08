@@ -1,6 +1,6 @@
 CREATE TABLE books (
     id_buku INT PRIMARY KEY AUTO_INCREMENT,
-    judul_buku VARCHAR(200) NOT NULL,
+    judul_buku VARCHAR(200) NOT NULL UNIQUE,
     tahun INT not null,
     jumlah_eksemplar INT NOT NULL,
     penulis VARCHAR(100) NOT NULL,

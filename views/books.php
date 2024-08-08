@@ -38,7 +38,7 @@ $books = query("Select * from books");
             <td><?= $book["no_panggil"]; ?></td>
             <td>
                 <a href="edit_book.php?id=<?= $book["id_buku"]; ?>" class="btn-add-member">Edit</a>
-                <a href="delete_book.php?id=<?= $book["id_buku"]; ?>" onclick="return confirm('Yakin Hapus Data?');" class="btn-add-member delete" style="background-color: #dc3545;">Hapus</a>
+                <a href="delete_book.php?id=<?= $book["id_buku"]; ?>" onclick="return confirm('Yakin Hapus Data?');" class="btn-add-member delete">Hapus</a>
             </td>
         </tr>
         <?php endforeach; ?>

@@ -2,12 +2,28 @@
 
 $conn = mysqli_connect("localhost", "root", "", "system_library_php_native");
 
-function query($query): array {
+function query($sql, $params = [])
+{
     global $conn;
-    $result = mysqli_query($conn, $query);
-    $rows = [];
-    while ($row = mysqli_fetch_assoc($result)) {
-        $rows[] = $row;
+    
+    $stmt = $conn->prepare($sql);
+    
+    if (!$stmt) {
+        throw new Exception("Failed to prepare statement: " . $conn->error);
     }
-    return $rows;
+
+    if ($params) {
+        $types = str_repeat('s', count($params)); 
+        $stmt->bind_param($types, ...$params);
+    }
+
+    $stmt->execute();
+    
+    $result = $stmt->get_result();
+    
+    $data = $result->fetch_all(MYSQLI_ASSOC);
+    
+    $stmt->close();
+
+    return $data;
 }
