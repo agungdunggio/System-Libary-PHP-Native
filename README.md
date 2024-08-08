@@ -1,6 +1,3 @@
-Berikut adalah contoh README untuk aplikasi sistem perpustakaan Anda. README ini mencakup pengantar aplikasi, fitur utama, cara instalasi, penggunaan, dan informasi tambahan.
-
----
 
 # Sistem Perpustakaan
 
