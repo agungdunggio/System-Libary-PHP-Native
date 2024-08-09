@@ -1,6 +1,21 @@
 <?php 
 
-$conn = mysqli_connect("localhost", "root", "", "system_library_php_native");
+
+// require __DIR__ . '/env.php';
+require __DIR__ . '/../env.php';
+
+$host = $_ENV['DB_HOST'];
+$user = $_ENV['DB_USER'];
+$password = $_ENV['DB_PASSWORD'];
+$dbname = $_ENV['DB_NAME'];
+
+$conn = mysqli_connect($host, $user, $password, $dbname);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+
 
 function query($sql, $params = [])
 {

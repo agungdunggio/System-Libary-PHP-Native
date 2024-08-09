@@ -5,9 +5,6 @@ require '../func/cnt_loans_returns.php';
 $loans = query("SELECT l.id_peminjaman, l.nik_anggota, l.id_buku, l.tanggal_pinjam, l.batas_pinjam, r.tanggal_kembali, r.denda 
                  FROM loans as l
                  LEFT JOIN returns as r ON l.id_peminjaman = r.id_peminjaman");
-
-
-
 ?>
 
 <section class="section-member">
@@ -50,14 +47,28 @@ $loans = query("SELECT l.id_peminjaman, l.nik_anggota, l.id_buku, l.tanggal_pinj
                 } else {
                     $denda = $loan['denda'] ?? 0;
                 }
+
+                // Determine badge class based on status
+                $badgeClass = '';
+                switch ($status) {
+                    case 'Dipinjam':
+                        $badgeClass = 'badge badge-dipinjam';
+                        break;
+                    case 'Terlambat':
+                        $badgeClass = 'badge badge-terlambat';
+                        break;
+                    case 'Kembali':
+                        $badgeClass = 'badge badge-kembali';
+                        break;
+                }
                 ?>
                 <tr>
-                    <td><?= $no++; ?></td>
+                    <td><?= htmlspecialchars($no++); ?></td>
                     <td><?= htmlspecialchars($member); ?></td>
                     <td><?= htmlspecialchars($book); ?></td>
                     <td><?= htmlspecialchars(date('d-m-Y', strtotime($loan['tanggal_pinjam']))); ?></td>
                     <td><?= htmlspecialchars(date('d-m-Y', strtotime($loan['batas_pinjam']))); ?></td>
-                    <td><?= htmlspecialchars($status); ?></td>
+                    <td><span class="<?= htmlspecialchars($badgeClass); ?>"><?= htmlspecialchars($status); ?></span></td>
                     <td>Rp. <?= htmlspecialchars(number_format($denda, 0, ',', '.')); ?></td>
                     <td>
                         <?php if (!$loan['tanggal_kembali']) : ?>
@@ -71,7 +82,6 @@ $loans = query("SELECT l.id_peminjaman, l.nik_anggota, l.id_buku, l.tanggal_pinj
                         <a href="edit_loan_return.php?id=<?= htmlspecialchars($loan['id_peminjaman']); ?>" class="btn-add-member">Edit</a>
                         <a href="delete_loan_return.php?id=<?= htmlspecialchars($loan['id_peminjaman']); ?>" onclick="return confirm('Yakin Hapus Data?');" class="btn-add-member delete">Hapus</a>
                     </td>
-
                 </tr>
             <?php endforeach; ?>
         </tbody>
